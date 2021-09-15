@@ -1,0 +1,67 @@
+/* MARK: - Body Styling/Background - */
+html {
+  width: 100%;
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  background-color: darkgrey; 
+}
+
+/* MARK: - Header Styling - */
+header h1 {
+	font-family: 'Poppins', sans-serif;
+	font-weight: 600;
+	font-style: none;
+}
+
+/* MARK: - Loading icon modified from loading.io */
+#lds-ring {
+  display: inline-block;
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  z-index: 1000;
+  transition: .5s;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#lds-ring div {
+    display: block;
+    position: absolute;
+    width: 128px;
+    height: 128px;
+    margin: 8px;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    background: none;
+    box-shadow: inset 20px 0px 10px #ffff72, inset 35px 0px 15px #c7c732;
+    -moz-box-shadow: inset 20px 0px 10px #ffff72, inset 35px 0px 15px #c7c732;
+}
+
+@keyframes lds-ring {
+  0% { transform: rotate(325deg); }		/* Start at an angle */
+  100% { transform: rotate(685deg); }	/* End at start angle + 360 for full rotation */
+}
+
+/* MARK - Button Styling - */
+.like-button {
+	border: none;
+	background: none;
+	cursor: pointer;
+	color: #a81414;
+	font-size: 24pt;
+	transition: .4s;
+}
+.like-button:hover { text-shadow: 0 0 10px red; }
+
+/* MARK - APOD Styling - */
+
+/* MARK - Other Photos Styling - */
+
+/* MARK - Other - */
+.tooltip { cursor: help; }
