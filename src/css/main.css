@@ -65,3 +65,5 @@ header h1 {
 
 /* MARK - Other - */
 .tooltip { cursor: help; }
+
+img { width: 200px; height: auto; }
