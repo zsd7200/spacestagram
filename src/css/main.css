@@ -87,3 +87,4 @@ header h1 {
 .tooltip { cursor: help; }
 
 img { width: 200px; height: auto; }
+#apod-video { width: 320px; height: 240px; border: none; }

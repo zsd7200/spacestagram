@@ -56,21 +56,40 @@ class APOD extends React.Component {
 		if(err) return <ErrorDisplay message={err.message} />
 		else if (!loaded) return <Loading />;
 		else {
-			return (
-				<div id="apod-container">
-					<img id="apod-pic" src={data.url} alt={data.title} />
-					<h2 id="apod-title">
-						<span className="tooltip" 
-							  title="Astronomy Picture Of the Day">
-							  
-							  APOD:</span> {data.title}
-					</h2>
-					<p id="apoc-date">{handleDate(data.date)}</p>
-					<p id="apoc-desc">{data.explanation}</p>
-					<LikeButton url={data.url} />
-					<ShareButton type="apod" />
-				</div>
-			);
+			console.log(data.url);
+			if(data.url.indexOf("youtube") > -1) {
+				return (
+					<div id="apod-container">
+						<iframe id="apod-video" src={data.url} title={data.title}></iframe>
+						<h2 id="apod-title">
+							<span className="tooltip" 
+								  title="Astronomy Picture Of the Day">
+								  
+								  APOD:</span> {data.title}
+						</h2>
+						<p id="apoc-date">{handleDate(data.date)}</p>
+						<p id="apoc-desc">{data.explanation}</p>
+						<LikeButton url={data.url} />
+						<ShareButton type="apod" />
+					</div>
+				);
+			} else {
+				return (
+					<div id="apod-container">
+						<img id="apod-pic" src={data.url} alt={data.title} />
+						<h2 id="apod-title">
+							<span className="tooltip" 
+								  title="Astronomy Picture Of the Day">
+								  
+								  APOD:</span> {data.title}
+						</h2>
+						<p id="apoc-date">{handleDate(data.date)}</p>
+						<p id="apoc-desc">{data.explanation}</p>
+						<LikeButton url={data.url} />
+						<ShareButton type="apod" />
+					</div>
+				);
+			}
 		}
 	};
 };
