@@ -7,16 +7,17 @@ import {
 	handleDate,
 	Loading,
 	ErrorDisplay,
-	LikeButton
+	LikeButton,
+	ShareButton
 } from './helpers';
 
 // takes props:
 // json (which has these values: id, sol, camera{id, name, rover_id, full_name}, 
 // img_src, earth_date, rover{id, name, landing_date, launch_date, status})
-// key - index in map
-// creates a container for one picture, mapped in Curiosity component
+// key - index in map (optional)
+// creates a container for a single picture, gets mapped in Curiosity
 class CuriosityPicture extends React.Component {
-	// compile title for curiosity pics since
+	// func to compile title for curiosity pics since
 	// there isn't a built-in name
 	handleTitle = (name, camName, id) => {
 		let retStr = name + " - ";
@@ -36,12 +37,15 @@ class CuriosityPicture extends React.Component {
 				<h2 className="rover-title">{title}</h2>
 				<p className="rover-date">{handleDate(this.props.json.earth_date)}</p>
 				<LikeButton url={this.props.json.img_src} />
+				<ShareButton type="curiosity" id={this.props.json.id} />
 			</div>
 		);
 	};
 };
 
 // displays all curiosity pics loaded in (25, since just the first page)
+// takes props:
+// id
 class Curiosity extends React.Component {
 	constructor(props) {
 		super(props);
@@ -57,7 +61,7 @@ class Curiosity extends React.Component {
 	};
 	
 	componentDidMount() {
-		// fetch APOD data
+		// fetch curiosity data
 		fetch(this.url + apiKey)
 			.then(res => res.json())
 			.then(
@@ -83,16 +87,37 @@ class Curiosity extends React.Component {
 		// set for easier access
 		const { err, loaded, data } = this.state;
 		
+		// if error display the error, if loading display loading
+		// component until loaded
 		if(err) return <ErrorDisplay message={err.message} />
 		else if (!loaded) return <Loading />;
 		else {
-			return (
-				<div id="curiosity-container">
-					{data.photos.map((item, index) => {
-						return <CuriosityPicture json={item} key={index} />;
-					})}
-				</div>
-			);
+			// if fed an ID through a query param, only show that
+			// specific image
+			if(this.props.id) {
+				let json = {};
+				
+				// copy the correct json data to pass through to CuriosityPicture
+				for(let i = 0; i < data.photos.length; i++) {
+					console.log(data.photos[i].id);
+					if(parseInt(this.props.id) === data.photos[i].id) {
+						json = data.photos[i];
+						break;
+					}
+				}
+				
+				return <CuriosityPicture json={json} />;
+				
+			} else {
+				// otherwise (no query param), show all pictures
+				return (
+					<div id="curiosity-container">
+						{data.photos.map((item, index) => {
+							return <CuriosityPicture json={item} key={index} />;
+						})}
+					</div>
+				);
+			}
 		}
 	};
 };
