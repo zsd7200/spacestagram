@@ -56,7 +56,7 @@ class APOD extends React.Component {
 		if(err) return <ErrorDisplay message={err.message} />
 		else if (!loaded) return <Loading />;
 		else {
-			console.log(data.url);
+			// handle if apod is a youtube video by placing it in an iframe
 			if(data.url.indexOf("youtube") > -1) {
 				return (
 					<div id="apod-container">
@@ -74,6 +74,7 @@ class APOD extends React.Component {
 					</div>
 				);
 			} else {
+				// otherwise just display an <img>
 				return (
 					<div id="apod-container">
 						<img id="apod-pic" src={data.url} alt={data.title} />
