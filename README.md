@@ -1,4 +1,4 @@
-# Spacestagram
+# [Spacestagram](https://zsd-shopify-frontend.herokuapp.com/)
 by zsd7200
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -18,6 +18,8 @@ If you wish to apply your API Key, create a file called `.env` in the project's 
 paste this line: `REACT_APP_NASA_API_KEY=""`, placing your API key in the quotations.
 
 An example of a properly set up `.env` file might look something like this: `REACT_APP_NASA_API_KEY="87sdf9shdf98sd6hsef89efhbfw5e465bnjbasf8"`.
+
+(Note that this is not a real key, just an example of what one would look like.)
 
 If a key is not provided, `DEMO_KEY` will be used.
 

@@ -1,8 +1,7 @@
 // home.js - landing/index page, also handles initializing localStorage if necessary
 
 import React from 'react';
-import './css/main.css';
-import { lsKey, Header } from './helpers'
+import { lsKey, Header, EndMessage } from './helpers'
 import { APOD } from './apod';
 import { Curiosity } from './curiosity';
 
@@ -22,6 +21,8 @@ class Home extends React.Component {
 				<APOD />
 				
 				<Curiosity />
+				
+				<EndMessage />
 			</>
 		);
 	}

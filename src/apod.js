@@ -1,7 +1,6 @@
 // apod.js - Component for displaying the Astronomy Picture of the Day (APOD).
 
 import React from 'react';
-import './css/main.css';
 import {
 	apiKey,
 	handleDate,
@@ -62,7 +61,7 @@ class APOD extends React.Component {
 					<div id="apod-container">
 						<iframe id="apod-video" src={data.url} title={data.title}></iframe>
 						<h2 id="apod-title">
-							<span className="tooltip" 
+							<span className="help" 
 								  title="Astronomy Picture Of the Day">
 								  
 								  APOD:</span> {data.title}
@@ -79,7 +78,7 @@ class APOD extends React.Component {
 					<div id="apod-container">
 						<img id="apod-pic" src={data.url} alt={data.title} />
 						<h2 id="apod-title">
-							<span className="tooltip" 
+							<span className="help" 
 								  title="Astronomy Picture Of the Day">
 								  
 								  APOD:</span> {data.title}

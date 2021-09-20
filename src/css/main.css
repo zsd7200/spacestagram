@@ -1,21 +1,13 @@
 /* MARK: - Body Styling/Background - */
 html {
-  width: 100%;
-  height: 100%; }
+	width: 100%;
+	height: 100%; }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans', sans-serif;
-  transition: background-color 0.4s;
-}
-
-body.light-mode {
-	background-color: #e3e3e3;
-	color: black;
-}
-
-body.dark-mode {
+	margin: 0;
+	padding: 0;
+	font-family: 'Open Sans', sans-serif;
+	transition: background-color 0.4s;
 	background-color: #2b2b36;
 	color: #f2f2f2;
 }
@@ -81,10 +73,41 @@ header h1 {
 
 /* MARK - APOD Styling - */
 
-/* MARK - Other Photos Styling - */
+/* MARK - Curiosity Photos Styling - */
+#curiosity-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.rover-pic-container { 
+	width: 25%;
+	margin: 15px 15px 0 0;
+	border: 10px solid;
+	border-color: #363645;
+	border-radius: 10px;
+	background-color: #444457;
+}
+
+.rover-pic {
+	width: 100%;
+}
 
 /* MARK - Other - */
-.tooltip { cursor: help; }
+.help { cursor: help; }
 
 img { width: 200px; height: auto; }
 #apod-video { width: 320px; height: 240px; border: none; }
+
+/* MARK: - Media Queries for different screen sizes - */
+@media only screen and (max-width: 900px) {
+	#curiosity-container {
+		flex-direction: column;
+	}
+	.rover-pic-container { 
+		width: 80%; 
+		margin: 15px auto 0;
+	}
+}

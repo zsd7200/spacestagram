@@ -2,7 +2,6 @@
 
 import React from 'react';
 import useDarkMode from 'use-dark-mode';
-import './css/main.css';
 
 // if no api key is found in environment variables, use demo key
 const apiKey = process.env.REACT_APP_NASA_API_KEY || 'DEMO_KEY';
@@ -49,7 +48,6 @@ class Header extends React.Component {
 						Spacestagram <i className="fas fa-rocket"></i>
 					</a>
 				</h1>
-				<DarkToggle />
 			</header>
 		);
 	}
@@ -66,6 +64,18 @@ class NotFound extends React.Component {
 		);
 	}
 };
+
+// displayed at the end of all shown images
+class EndMessage extends React.Component {
+	render() {
+		return (
+			<div id="end-of-page">
+				<h4>Looks like you've reached the end of the page!</h4>
+				<h5>Hope you had fun, see you again soon!</h5>
+			</div>
+		);
+	}
+}
 
 // takes props:
 // url
@@ -206,4 +216,5 @@ const DarkToggle = () => {
 };
 
 export { apiKey, lsKey, handleDate, Loading, ErrorDisplay, 
-		 Header, NotFound, LikeButton, ShareButton, DarkToggle };
+		 Header, NotFound, EndMessage, LikeButton, ShareButton, 
+		 DarkToggle };

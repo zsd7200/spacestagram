@@ -1,7 +1,6 @@
 // curiosity.js - Component for displaying pictures from the Mars rover named Curiosity.
 
 import React from 'react';
-import './css/main.css';
 import {
 	apiKey,
 	handleDate,
