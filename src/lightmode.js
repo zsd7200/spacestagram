@@ -2,29 +2,43 @@
 
 import React from 'react';
 
+const lsKey = "zsdSpacestagram-lightMode";
+
+// method gets exported to be used in other components, lets them
+// know whether or not to append light-mode
+let isDark = () => {
+	if(localStorage.getItem(lsKey) !== null) {
+		if(localStorage.getItem(lsKey) === 'false') {
+			return false;
+		}
+	}
+	return true;
+};
+
 class LightToggle extends React.Component {
 	constructor(props) {
 		super(props);
 		
 		this.state = { darkMode: true };
-		this.lsKey = "zsdSpacestagram-lightMode";
 	}
 	
 	componentDidMount() {
 		// if lsKey isn't null, also check if it returns false
 		// that way light mode can be handled on page load
-		if(localStorage.getItem(this.lsKey) !== null) {
-			if(localStorage.getItem(this.lsKey) === 'false') {
-				this.handleLight();
+		if(localStorage.getItem(lsKey) !== null) {
+			if(localStorage.getItem(lsKey) === 'false') {
+				window.onload = this.handleLight;
 			}
 		} else {
-			localStorage.setItem(this.lsKey, this.state.darkMode); // otherwise store true (default)
+			localStorage.setItem(lsKey, this.state.darkMode); // otherwise store true (default)
 		}
 	}
 	
 	handleLight = () => {
 		let filteredArr, arr = [];
 		let toggleButton = document.querySelector('#dark-toggle-button');
+		let roverPics = Array.from(document.querySelectorAll('.rover-pic-container'));
+		console.log(roverPics);
 		
 		// check if disabled, will prevent rest of func from firing
 		if(toggleButton.disabled)
@@ -37,9 +51,7 @@ class LightToggle extends React.Component {
 		arr.push(toggleButton);
 		arr.push(document.querySelector('#return-home'));
 		arr.push(document.querySelector('#loading-container'));
-		arr = arr.concat(Array.from(document.querySelectorAll('.like-button')));
-		arr = arr.concat(Array.from(document.querySelectorAll('.share-button')));
-		arr = arr.concat(Array.from(document.querySelectorAll('.single-img-container')));
+		arr.push(document.querySelector('#single-img-container'));
 		arr = arr.concat(Array.from(document.querySelectorAll('.rover-pic-container')));
 
 		// filter out null objects
@@ -53,7 +65,7 @@ class LightToggle extends React.Component {
 		// button transition anim and localStorage set
 		toggleButton.disabled = true;
 		toggleButton.children[0].classList.add('toggle-anim');
-		localStorage.setItem(this.lsKey, !this.state.darkMode);
+		localStorage.setItem(lsKey, !this.state.darkMode);
 		
 		// element becomes invisible from 30% to 40% of a 1s anim, so 
 		// 350 ms is perfect to swap fa-sun with fa-moon and vice versa
@@ -86,4 +98,4 @@ class LightToggle extends React.Component {
 	}
 };
 
-export { LightToggle };
+export { isDark, LightToggle };

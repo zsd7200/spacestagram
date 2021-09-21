@@ -8,12 +8,14 @@ import {
 	ErrorDisplay,
 	Buttons
 } from './helpers';
+import { isDark } from './lightmode';
 
 // takes props:
 // json (which has these values: id, sol, camera{id, name, rover_id, full_name}, 
 // img_src, earth_date, rover{id, name, landing_date, launch_date, status})
 // single (bool, whether or not the pic is on its own page)
 // key - index in map (optional)
+// css (optional, used for light mode in single-image mode)
 // creates a container for a single picture, gets mapped in Curiosity
 class CuriosityPicture extends React.Component {
 	// func to compile title for curiosity pics since
@@ -34,11 +36,11 @@ class CuriosityPicture extends React.Component {
 		// check if it's a single image/on its own page, or if it's on the home page with others
 		if(this.props.single) {
 			return (
-				<div className="single-img-container">
-					<div className="single-img">
+				<div id="single-img-container" className={this.props.css}>
+					<div id="single-img">
 						<img className="rover-pic" src={this.props.json.img_src} alt={title} />
 					</div>
-					<div className="single-data">
+					<div id="single-data">
 						<h1 className="rover-title">{title}</h1>
 						<p className="rover-date help" title={handleDate(this.props.json.earth_date)}>{this.props.json.earth_date}</p>
 						<Buttons url={this.props.json.img_src} type="curiosity" id={this.props.json.id}/>
@@ -46,8 +48,11 @@ class CuriosityPicture extends React.Component {
 				</div>
 			);
 		} else {
+			// compile names of classes with css prop
+			const cssName = (this.props.css) ? "rover-pic-container " + this.props.css : "rover-pic-container";
+			
 			return (
-				<div className="rover-pic-container">
+				<div className={cssName}>
 					<img className="rover-pic" src={this.props.json.img_src} alt={title} />
 					<h2 className="rover-title">{title}</h2>
 					<p className="rover-date help" title={handleDate(this.props.json.earth_date)}>{this.props.json.earth_date}</p>
@@ -121,6 +126,10 @@ class Curiosity extends React.Component {
 					}
 				}
 				
+				// check if light mode is active
+				if(!isDark())
+					return <CuriosityPicture json={json} single={true} css={"light-mode"} />;
+				
 				return <CuriosityPicture json={json} single={true} />;
 				
 			} else {
@@ -128,6 +137,11 @@ class Curiosity extends React.Component {
 				return (
 					<div id="curiosity-container">
 						{data.photos.map((item, index) => {
+							// check if light mode is active
+							if(!isDark())
+								return <CuriosityPicture json={item} single={false} key={index} css={"light-mode"} />;
+								
+							
 							return <CuriosityPicture json={item} single={false} key={index} />;
 						})}
 					</div>

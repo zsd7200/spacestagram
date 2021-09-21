@@ -114,7 +114,7 @@ header h1 {
 }
 
 /* MARK - APOD/Single Image Styling - */
-.single-img-container {
+#single-img-container {
 	width: 90%;
 	display: flex;
 	flex-direction: row;
@@ -126,22 +126,22 @@ header h1 {
 	background-color: #444457;
 }
 
-.single-img {
+#single-img {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.single-img img { width: auto; max-width: 900px; max-height: 500px; }
+#single-img img { width: auto; max-width: 900px; max-height: 500px; }
 
-.single-data { 
+#single-data { 
 	display: flex;
 	padding-left: 30px;
 	padding-right: 30px;
 	flex-direction: column;
 }
 
-.single-data p { font-size: 13pt; margin-top: 4px; }
-.single-data h1 { margin-bottom: 4px; }
+#single-data p { font-size: 13pt; margin-top: 4px; }
+#single-data h1 { margin-bottom: 4px; }
 #apod-pic, #apod-video { padding-left: 20px; }
 #apod-video { width: 1024px; height: 690px; border: none; }
 
@@ -184,15 +184,10 @@ body.light-mode { background: #b8f4ff; color: black; }
 
 #title.light-mode a:hover, #return-home.light-mode a:hover { color: blue; }
 #title.light-mode a:active, #return-home.light-mode a:active { color: #9e9e9e; }
-#loading-container.light-mode { background-color: #2b2b36; }
-.like-button.light-mode { color: #ffabab; }
-.like-button:hover.light-mode { text-shadow: 0 0 10px #995757; }
-.share-button:hover.light-mode { text-shadow: 0 0 10px grey; }
-.share-button.light-mode a:link, .share-button a:visited { color: #c2c2c2; }
-.share-button.light-mode a:active { color: #858585; }
-.single-img-container.light-mode, .rover-pic-container.light-mode { 
-	border-color: #363645; 
-	background-color: #444457; 
+#loading-container.light-mode { background-color: #b8f4ff; }
+#single-img-container.light-mode, .rover-pic-container.light-mode { 
+	border-color: #58757a; 
+	background-color: #84b0b8; 
 }
 
 /* MARK - Light Mode Button Animation - */
@@ -210,17 +205,17 @@ body.light-mode { background: #b8f4ff; color: black; }
 /* MARK: - Media Queries for different screen sizes - */
 @media only screen and (max-width: 1200px) {
 	header h1 { font-size: 24pt; }
-	.single-img-container { flex-direction: column; }
-	.single-img img { width: 100%; max-height: 1000px; }
+	#single-img-container { flex-direction: column; }
+	#single-img img { width: 100%; max-height: 1000px; }
 	#apod-pic, #apod-vid { padding-left: 0px; }
 }
 
 @media only screen and (max-width: 900px) {
 	#curiosity-container { flex-direction: column; margin-top: 0px; }
-	.rover-pic-container, .single-img-container { 
+	.rover-pic-container, #single-img-container { 
 		width: 80%; 
 		margin: 15px auto 0;
 	}
 	.rover-title { font-size: 1.15em; }
-	.single-data { padding-left: 10px; padding-right: 10px; }
+	#single-data { padding-left: 10px; padding-right: 10px; }
 }
