@@ -91,6 +91,7 @@ header h1 {
 	position: absolute;
 	right: 10px;
 	top: 20px;
+	overflow-y: hidden;
 }
 
 /* MARK - Page Not Found Styling - */
@@ -172,9 +173,10 @@ header h1 {
 
 /* MARK - Other - */
 .help { cursor: help; }
+.not-allowed { cursor: not-allowed; }
 
 /* MARK - Light Mode Colors - */
-body.light-mode { background: red; color: black; }
+body.light-mode { background: #b8f4ff; color: black; }
 
 #title.light-mode a:link, #title.light-mode a:visited, 
 #return-home.light-mode a:link, #return-home.light-mode a:visited, 
@@ -191,6 +193,18 @@ body.light-mode { background: red; color: black; }
 .single-img-container.light-mode, .rover-pic-container.light-mode { 
 	border-color: #363645; 
 	background-color: #444457; 
+}
+
+/* MARK - Light Mode Button Animation - */
+.toggle-anim {
+	animation: slide-down 1s;
+}
+
+@keyframes slide-down {
+	0% { transform: translateY(0); }
+	30% { transform: translateY(44px); }
+	40% { transform: translateY(44px); }
+	100% { transform: translateY(0); }
 }
 
 /* MARK: - Media Queries for different screen sizes - */

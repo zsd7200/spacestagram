@@ -24,12 +24,17 @@ class LightToggle extends React.Component {
 	
 	handleLight = () => {
 		let filteredArr, arr = [];
+		let toggleButton = document.querySelector('#dark-toggle-button');
+		
+		// check if disabled, will prevent rest of func from firing
+		if(toggleButton.disabled)
+			return false;
 		
 		// push dom elements that need to be changed
 		// to arr
 		arr.push(document.querySelector('body'));
 		arr.push(document.querySelector('#title'));
-		arr.push(document.querySelector('#dark-toggle-button'));
+		arr.push(toggleButton);
 		arr.push(document.querySelector('#return-home'));
 		arr.push(document.querySelector('#loading-container'));
 		arr = arr.concat(Array.from(document.querySelectorAll('.like-button')));
@@ -45,9 +50,30 @@ class LightToggle extends React.Component {
 			filteredArr[i].classList.toggle('light-mode');
 		}
 		
-		// setState to change button to appropriate icon
-		this.setState({ darkMode: !this.state.darkMode });
+		// button transition anim and localStorage set
+		toggleButton.disabled = true;
+		toggleButton.children[0].classList.add('toggle-anim');
 		localStorage.setItem(this.lsKey, !this.state.darkMode);
+		
+		// element becomes invisible from 30% to 40% of a 1s anim, so 
+		// 350 ms is perfect to swap fa-sun with fa-moon and vice versa
+		setTimeout(() => {
+			if(Array.from(toggleButton.children[0].classList).includes("fa-sun")) {
+				toggleButton.children[0].classList.remove("fa-sun");
+				toggleButton.children[0].classList.add("fa-moon");
+			} else {
+				toggleButton.children[0].classList.remove("fa-moon");
+				toggleButton.children[0].classList.add("fa-sun");
+			}
+		}, 350);
+
+		// make sure animation is done before enabling button and 
+		// rerendering with setState
+		setTimeout(() => {
+			toggleButton.disabled = false;
+			this.setState({ darkMode: !this.state.darkMode });
+		}, 1000);
+
 	}
 	
 	render() {
