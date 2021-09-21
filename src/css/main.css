@@ -7,7 +7,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Open Sans', sans-serif;
-	transition: background-color 0.4s;
+	transition: .3s;
 	background: #2b2b36;
 	color: #f2f2f2;
 }
@@ -20,10 +20,10 @@ header h1 {
 	text-align: center;
 	font-size: 32pt;
 }
-header h1 a { transition: .2s; }
-header h1 a:link, header h1 a:visited { color: #d1d1d1; }
-header h1 a:hover { color: #f2f2f2; }
-header h1 a:active { color: #9e9e9e; }
+#title a { transition: .3s; }
+#title a:link, header h1 a:visited { color: #d1d1d1; }
+#title a:hover { color: #f2f2f2; }
+#title a:active { color: #9e9e9e; }
 
 /* MARK: - Loading icon modified from loading.io */
 #loading-container {
@@ -54,7 +54,7 @@ header h1 a:active { color: #9e9e9e; }
     height: 128px;
     margin: 8px;
     border-radius: 50%;
-    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    animation: lds-ring 1.3s cubic-bezier(0.5, 0, 0.5, 1) infinite;
     background: none;
     box-shadow: inset 20px 0px 10px #ffff72, inset 35px 0px 15px #c7c732;
     -moz-box-shadow: inset 20px 0px 10px #ffff72, inset 35px 0px 15px #c7c732;
@@ -83,9 +83,16 @@ header h1 a:active { color: #9e9e9e; }
 .like-button { color: #ffabab; }
 .like-button:hover { text-shadow: 0 0 10px #995757; }
 .share-button:hover { text-shadow: 0 0 10px grey; }
-.share-button a { transition: .2s; }
+.share-button a { transition: .3s; }
 .share-button a:link, .share-button a:visited { color: #c2c2c2; }
 .share-button a:active { color: #858585; }
+#dark-toggle-button { 
+	color: #f2f2f2; 
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	overflow-y: hidden;
+}
 
 /* MARK - Page Not Found Styling - */
 #not-found {
@@ -93,7 +100,7 @@ header h1 a:active { color: #9e9e9e; }
 	padding-top: 10vh;
 }
 
-#return-home a { transition: .2s; }
+#return-home a { transition: .3s; }
 #return-home a:link, #return-home a:visited { color: #d1d1d1; }
 #return-home a:hover { color: #f2f2f2; }
 #return-home a:active { color: #9e9e9e; }
@@ -107,7 +114,7 @@ header h1 a:active { color: #9e9e9e; }
 }
 
 /* MARK - APOD/Single Image Styling - */
-.single-img-container {
+#single-img-container {
 	width: 90%;
 	display: flex;
 	flex-direction: row;
@@ -119,22 +126,22 @@ header h1 a:active { color: #9e9e9e; }
 	background-color: #444457;
 }
 
-.single-img {
+#single-img {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
-.single-img img { width: auto; max-width: 900px; max-height: 500px; }
+#single-img img { width: auto; max-width: 900px; max-height: 500px; }
 
-.single-data { 
+#single-data { 
 	display: flex;
 	padding-left: 30px;
 	padding-right: 30px;
 	flex-direction: column;
 }
 
-.single-data p { font-size: 13pt; margin-top: 4px; }
-.single-data h1 { margin-bottom: 4px; }
+#single-data p { font-size: 13pt; margin-top: 4px; }
+#single-data h1 { margin-bottom: 4px; }
 #apod-pic, #apod-video { padding-left: 20px; }
 #apod-video { width: 1024px; height: 690px; border: none; }
 
@@ -166,21 +173,49 @@ header h1 a:active { color: #9e9e9e; }
 
 /* MARK - Other - */
 .help { cursor: help; }
+.not-allowed { cursor: not-allowed; }
+
+/* MARK - Light Mode Colors - */
+body.light-mode { background: #b8f4ff; color: black; }
+
+#title.light-mode a:link, #title.light-mode a:visited, 
+#return-home.light-mode a:link, #return-home.light-mode a:visited, 
+#dark-toggle-button.light-mode { color: black; }
+
+#title.light-mode a:hover, #return-home.light-mode a:hover { color: blue; }
+#title.light-mode a:active, #return-home.light-mode a:active { color: #9e9e9e; }
+#loading-container.light-mode { background-color: #b8f4ff; }
+#single-img-container.light-mode, .rover-pic-container.light-mode { 
+	border-color: #58757a; 
+	background-color: #84b0b8; 
+}
+
+/* MARK - Light Mode Button Animation - */
+.toggle-anim {
+	animation: slide-down 1s;
+}
+
+@keyframes slide-down {
+	0% { transform: translateY(0); }
+	30% { transform: translateY(44px); }
+	40% { transform: translateY(44px); }
+	100% { transform: translateY(0); }
+}
 
 /* MARK: - Media Queries for different screen sizes - */
 @media only screen and (max-width: 1200px) {
 	header h1 { font-size: 24pt; }
-	.single-img-container { flex-direction: column; }
-	.single-img img { width: 100%; max-height: 1000px; }
+	#single-img-container { flex-direction: column; }
+	#single-img img { width: 100%; max-height: 1000px; }
 	#apod-pic, #apod-vid { padding-left: 0px; }
 }
 
 @media only screen and (max-width: 900px) {
 	#curiosity-container { flex-direction: column; margin-top: 0px; }
-	.rover-pic-container, .single-img-container { 
+	.rover-pic-container, #single-img-container { 
 		width: 80%; 
 		margin: 15px auto 0;
 	}
 	.rover-title { font-size: 1.15em; }
-	.single-data { padding-left: 10px; padding-right: 10px; }
+	#single-data { padding-left: 10px; padding-right: 10px; }
 }

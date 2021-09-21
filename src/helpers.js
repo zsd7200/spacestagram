@@ -1,7 +1,7 @@
 // helpers.js - Store variables/functions used across multiple components.
 
 import React from 'react';
-import useDarkMode from 'use-dark-mode';
+import { LightToggle } from './lightmode';
 
 // if no api key is found in environment variables, use demo key
 const apiKey = process.env.REACT_APP_NASA_API_KEY || 'DEMO_KEY';
@@ -43,9 +43,10 @@ class Header extends React.Component {
 	render() {
 		return ( 
 			<header>
-				<h1>
+				<h1 id="title">
 					<a href="/">Spacestagram <i className="fas fa-rocket"></i></a>
 				</h1>
+				<LightToggle />
 			</header>
 		);
 	}
@@ -193,41 +194,5 @@ class Buttons extends React.Component {
 	}
 }
 
-// button to toggle state of dark mode
-const DarkToggle = () => {
-	// moon - <i className="far fa-moon"></i>
-	// sun  - <i className="far fa-sun"></i>
-	const darkMode = useDarkMode(true);
-	const darkModeLsKey = "darkMode";
-	
-	// check current theme from LS (if unavailable, set to
-	// 'true', which is dark theme)
-	let currTheme = (localStorage.getItem(darkModeLsKey)) ? localStorage.getItem(darkModeLsKey) : 'true';
-	
-	// handle showing the button with a switch
-	switch(currTheme) {
-		// show sun in dark mode
-		case('true'):
-			return (
-				<div id="dark-toggle-container">
-					<button id="dark-toggle-button" onClick={darkMode.toggle}><i className="far fa-sun"></i></button>
-				</div>
-			);
-		
-		// show moon in light mode
-		case('false'):
-			return (
-				<div id="dark-toggle-container">
-					<button id="dark-toggle-button" onClick={darkMode.toggle}><i className="far fa-moon"></i></button>
-				</div>
-			);
-		
-		// show error message if something is wrong
-		default:
-			return <ErrorDisplay message="Something went wrong, please clear localStorage! If you are still seeing this after clearing localStorage, please contact zsd7200@rit.edu" />;
-	}
-};
-
 export { apiKey, lsKey, handleDate, Loading, ErrorDisplay, 
-		 Header, NotFound, EndMessage, Buttons,
-		 DarkToggle };
+		 Header, NotFound, EndMessage, Buttons };
