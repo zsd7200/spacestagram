@@ -44,9 +44,7 @@ class Header extends React.Component {
 		return ( 
 			<header>
 				<h1>
-					<a href="/">
-						Spacestagram <i className="fas fa-rocket"></i>
-					</a>
+					<a href="/">Spacestagram <i className="fas fa-rocket"></i></a>
 				</h1>
 			</header>
 		);
