@@ -6,8 +6,7 @@ import {
 	handleDate,
 	Loading,
 	ErrorDisplay,
-	LikeButton,
-	ShareButton
+	Buttons
 } from './helpers';
 
 // takes props:
@@ -34,9 +33,8 @@ class CuriosityPicture extends React.Component {
 			<div className="rover-pic-container">
 				<img className="rover-pic" src={this.props.json.img_src} alt={title} />
 				<h2 className="rover-title">{title}</h2>
-				<p className="rover-date">{handleDate(this.props.json.earth_date)}</p>
-				<LikeButton url={this.props.json.img_src} />
-				<ShareButton type="curiosity" id={this.props.json.id} />
+				<p className="rover-date help" title={handleDate(this.props.json.earth_date)}>{this.props.json.earth_date}</p>
+				<Buttons url={this.props.json.img_src} type="curiosity" id={this.props.json.id}/>
 			</div>
 		);
 	};

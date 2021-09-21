@@ -60,6 +60,12 @@ header h1 {
 }
 
 /* MARK - Button Styling - */
+.button-container { 
+	display: flex;
+	justify-content: space-around;
+	margin-top: auto;
+}
+
 .like-button, .share-button, #dark-toggle-button {
 	border: none;
 	background: none;
@@ -70,6 +76,28 @@ header h1 {
 .like-button { color: #a81414; }
 .like-button:hover { text-shadow: 0 0 10px red; }
 .share-button:hover { text-shadow: 0 0 10px grey; }
+.share-button a { transition: .2s; }
+.share-button a:link, .share-button a:visited { color: black; }
+.share-button a:active { color: #404040; }
+
+/* MARK - Page Not Found Styling - */
+#not-found {
+	text-align: center;
+	padding-top: 10vh;
+}
+
+#return-home a { transition: .2s; }
+#return-home a:link, #return-home a:visited { color: #d1d1d1; }
+#return-home a:hover { color: #f2f2f2; }
+#return-home a:active { color: #9e9e9e; }
+
+
+/* MARK - End of Page Message - */
+#end-of-page {
+	text-align: center;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
 
 /* MARK - APOD Styling - */
 
@@ -83,6 +111,8 @@ header h1 {
 }
 
 .rover-pic-container { 
+	display: flex;
+	flex-direction: column;
 	width: 25%;
 	margin: 15px 15px 0 0;
 	border: 10px solid;
@@ -91,21 +121,21 @@ header h1 {
 	background-color: #444457;
 }
 
-.rover-pic {
-	width: 100%;
-}
+.rover-pic { width: 100%; }
+.rover-title { margin-bottom: 4px; }
+.rover-date { margin-top: 4px; }
+.rover-title, .rover-date { padding-left: 10px; padding-right: 10px; }
 
 /* MARK - Other - */
 .help { cursor: help; }
-
-img { width: 200px; height: auto; }
-#apod-video { width: 320px; height: 240px; border: none; }
+#apod-video { width: 800px; height: 600px; border: none; }
 
 /* MARK: - Media Queries for different screen sizes - */
 @media only screen and (max-width: 900px) {
-	#curiosity-container {
-		flex-direction: column;
-	}
+	header h1 { text-align: center; }
+	#apod-pic { width: 100%; }
+	
+	#curiosity-container { flex-direction: column; }
 	.rover-pic-container { 
 		width: 80%; 
 		margin: 15px auto 0;

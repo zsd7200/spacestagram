@@ -58,8 +58,8 @@ class NotFound extends React.Component {
 	render() { 
 		return (
 			<div id="not-found">
-				<h3>Page Not Found</h3>
-				<a href="/">Click here to return home.</a>
+				<h1>Page Not Found</h1>
+				<h2 id="return-home"><a href="/">Click here to return home.</a></h2>
 			</div>
 		);
 	}
@@ -70,8 +70,9 @@ class EndMessage extends React.Component {
 	render() {
 		return (
 			<div id="end-of-page">
-				<h4>Looks like you've reached the end of the page!</h4>
-				<h5>Hope you had fun, see you again soon!</h5>
+				<h3>Looks like you've reached the end of the page!</h3>
+				<h4>Hope you had fun, see you again soon!</h4>
+				<h4><i className="fas fa-heart"></i></h4>
 			</div>
 		);
 	}
@@ -146,8 +147,6 @@ class LikeButton extends React.Component {
 // type ("apod" or "curiosity")
 // id (only taken from curiosity images)
 class ShareButton extends React.Component {
-	// <i class="fas fa-share-square"></i>
-	
 	// links are generated differently based on type of image
 	render() {
 		switch(this.props.type) {
@@ -179,6 +178,22 @@ class ShareButton extends React.Component {
 		}
 	}
 };
+
+// button container, holds both like and share
+// takes props:
+// url (for like)
+// type ("apod" or "curiosity", for share)
+// id (only taken from curiosity, for share)
+class Buttons extends React.Component {
+	render() {
+		return (
+			<div className="button-container">
+				<LikeButton url={this.props.url} />
+				<ShareButton type={this.props.type}	id={this.props.id} />
+			</div>
+		);
+	}
+}
 
 // button to toggle state of dark mode
 const DarkToggle = () => {
@@ -216,5 +231,5 @@ const DarkToggle = () => {
 };
 
 export { apiKey, lsKey, handleDate, Loading, ErrorDisplay, 
-		 Header, NotFound, EndMessage, LikeButton, ShareButton, 
+		 Header, NotFound, EndMessage, Buttons,
 		 DarkToggle };

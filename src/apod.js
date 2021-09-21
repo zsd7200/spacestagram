@@ -6,8 +6,7 @@ import {
 	handleDate,
 	Loading,
 	ErrorDisplay,
-	LikeButton,
-	ShareButton
+	Buttons
 } from './helpers';
 
 // astronomy picture of the day (APOD) component
@@ -66,10 +65,9 @@ class APOD extends React.Component {
 								  
 								  APOD:</span> {data.title}
 						</h2>
-						<p id="apoc-date">{handleDate(data.date)}</p>
-						<p id="apoc-desc">{data.explanation}</p>
-						<LikeButton url={data.url} />
-						<ShareButton type="apod" />
+						<p id="apod-date" className="help" title={handleDate(data.date)}>{data.date}</p>
+						<p id="apod-desc">{data.explanation}</p>
+						<Buttons url={data.url} type="apod" />
 					</div>
 				);
 			} else {
@@ -83,10 +81,9 @@ class APOD extends React.Component {
 								  
 								  APOD:</span> {data.title}
 						</h2>
-						<p id="apoc-date">{handleDate(data.date)}</p>
-						<p id="apoc-desc">{data.explanation}</p>
-						<LikeButton url={data.url} />
-						<ShareButton type="apod" />
+						<p id="apod-date" className="help" title={handleDate(data.date)}>{data.date}</p>
+						<p id="apod-desc">{data.explanation}</p>
+						<Buttons url={data.url} type="apod" />
 					</div>
 				);
 			}
