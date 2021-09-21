@@ -1,9 +1,11 @@
-# [Spacestagram](https://zsd-shopify-frontend.herokuapp.com/)
+# [Spacestagram](https://zsd-shopify-frontend.herokuapp.com/) (title is a live demo hosted on Heroku)
 by zsd7200
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install
+### `git clone https://github.com/zsd7200/spacestagram.git`
+### `cd spacestagram`
 ### `npm i`
 
 ## Run Local Server
@@ -27,4 +29,4 @@ If a key is not provided, `DEMO_KEY` will be used.
 
 If you're experiencing issues, try clearing your localStorage. Open the console and type 
 `localStorage.clear();` and press enter. If it returns undefined, your localStorage is now 
-clear and the project should work again.
+clear and the project should work again!
