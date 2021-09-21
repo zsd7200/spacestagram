@@ -73,7 +73,7 @@ header h1 {
 	margin-bottom: 20px;
 }
 
-.like-button, .share-button, #dark-toggle-button {
+.like-button, .share-button, #light-toggle-button {
 	border: none;
 	background: none;
 	cursor: pointer;
@@ -86,7 +86,7 @@ header h1 {
 .share-button a { transition: .3s; }
 .share-button a:link, .share-button a:visited { color: #c2c2c2; }
 .share-button a:active { color: #858585; }
-#dark-toggle-button { 
+#light-toggle-button { 
 	color: #f2f2f2; 
 	position: absolute;
 	right: 10px;
@@ -180,7 +180,7 @@ body.light-mode { background: #b8f4ff; color: black; }
 
 #title.light-mode a:link, #title.light-mode a:visited, 
 #return-home.light-mode a:link, #return-home.light-mode a:visited, 
-#dark-toggle-button.light-mode { color: black; }
+#light-toggle-button.light-mode { color: black; }
 
 #title.light-mode a:hover, #return-home.light-mode a:hover { color: blue; }
 #title.light-mode a:active, #return-home.light-mode a:active { color: #9e9e9e; }
@@ -204,7 +204,7 @@ body.light-mode { background: #b8f4ff; color: black; }
 
 /* MARK: - Media Queries for different screen sizes - */
 @media only screen and (max-width: 1200px) {
-	header h1 { font-size: 24pt; }
+	#title { font-size: 24pt; }
 	#single-img-container { flex-direction: column; }
 	#single-img img { width: 100%; max-height: 1000px; }
 	#apod-pic, #apod-vid { padding-left: 0px; }
@@ -218,4 +218,10 @@ body.light-mode { background: #b8f4ff; color: black; }
 	}
 	.rover-title { font-size: 1.15em; }
 	#single-data { padding-left: 10px; padding-right: 10px; }
+	header {
+		display: flex;
+		justify-content: space-around;
+	}
+	#title { font-size: 20pt; position: relative; top: 7px; }
+	#light-toggle-button { position: relative; top: 5px; right: 0; }
 }

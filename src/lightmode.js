@@ -36,7 +36,7 @@ class LightToggle extends React.Component {
 	
 	handleLight = () => {
 		let filteredArr, arr = [];
-		let toggleButton = document.querySelector('#dark-toggle-button');
+		let toggleButton = document.querySelector('#light-toggle-button');
 		let roverPics = Array.from(document.querySelectorAll('.rover-pic-container'));
 		console.log(roverPics);
 		
@@ -91,9 +91,9 @@ class LightToggle extends React.Component {
 	render() {
 		// show sun if in dark mode, moon if in light mode
 		if(this.state.darkMode)
-			return <button id="dark-toggle-button" onClick={this.handleLight}><i className="fas fa-sun"></i></button>
+			return <button id="light-toggle-button" onClick={this.handleLight}><i className="fas fa-sun"></i></button>
 		else
-			return <button id="dark-toggle-button" onClick={this.handleLight}><i className="fas fa-moon"></i></button>
+			return <button id="light-toggle-button" onClick={this.handleLight}><i className="fas fa-moon"></i></button>
 
 	}
 };
