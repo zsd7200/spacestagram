@@ -57,33 +57,41 @@ class APOD extends React.Component {
 			// handle if apod is a youtube video by placing it in an iframe
 			if(data.url.indexOf("youtube") > -1) {
 				return (
-					<div id="apod-container">
-						<iframe id="apod-video" src={data.url} title={data.title}></iframe>
-						<h2 id="apod-title">
-							<span className="help" 
-								  title="Astronomy Picture Of the Day">
-								  
-								  APOD:</span> {data.title}
-						</h2>
-						<p id="apod-date" className="help" title={handleDate(data.date)}>{data.date}</p>
-						<p id="apod-desc">{data.explanation}</p>
-						<Buttons url={data.url} type="apod" />
+					<div className="single-img-container">
+						<div className="single-img">
+							<iframe id="apod-video" src={data.url} title={data.title}></iframe>
+						</div>
+						<div className="single-data">
+							<h1 id="apod-title">
+								<span className="help" 
+									  title="Astronomy Picture Of the Day">
+									  
+									  APOD:</span> {data.title}
+							</h1>
+							<p id="apod-date" className="help" title={handleDate(data.date)}>{data.date}</p>
+							<p id="apod-desc">{data.explanation}</p>
+							<Buttons url={data.url} type="apod" />
+						</div>
 					</div>
 				);
 			} else {
 				// otherwise just display an <img>
 				return (
-					<div id="apod-container">
-						<img id="apod-pic" src={data.url} alt={data.title} />
-						<h2 id="apod-title">
-							<span className="help" 
-								  title="Astronomy Picture Of the Day">
-								  
-								  APOD:</span> {data.title}
-						</h2>
-						<p id="apod-date" className="help" title={handleDate(data.date)}>{data.date}</p>
-						<p id="apod-desc">{data.explanation}</p>
-						<Buttons url={data.url} type="apod" />
+					<div className="single-img-container">
+						<div className="single-img">
+							<img id="apod-pic" src={data.url} alt={data.title} />
+						</div>
+						<div className="single-data">
+							<h1 id="apod-title">
+								<span className="help" 
+									  title="Astronomy Picture Of the Day">
+									  
+									  APOD:</span> {data.title}
+							</h1>
+							<p id="apod-date" className="help" title={handleDate(data.date)}>{data.date}</p>
+							<p id="apod-desc">{data.explanation}</p>
+							<Buttons url={data.url} type="apod" />
+						</div>
 					</div>
 				);
 			}
